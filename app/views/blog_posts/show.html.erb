@@ -1,0 +1,32 @@
+<div class="panel panel-pimary">
+	<div class="panel-heading">
+		<%= @blog_post.title %>
+	</div>
+	<div class="panel-body">
+		<P><%= @blog_post.author %></P>
+		<p><%= time_ago_in_words(@blog_post.created_at) %> ago </p>
+		<p><%= @blog_post_entry %></p>
+	</div>
+	<div class="pantel-footer">
+		<%= link_to "Edit", edit_blog_post_path(id: @blog_post.id), class: "btn btn-warning" %>
+		<%= link_to "All Blog Posts", blog_posts_path, class: "btn btn-default" %>
+	</div>
+</div>
+
+<div class="panel panel-success">
+	<div class="panel-heading">
+		Make a comment...
+	</div>
+	<div class="panel-body">
+		<%= render 'comments/form' %>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		All comments...
+	</div>
+	<div class="panel-body">
+		<%= render 'comments/comment' %>
+	</div>
+</div>
