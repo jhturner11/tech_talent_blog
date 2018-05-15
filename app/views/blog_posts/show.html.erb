@@ -3,12 +3,15 @@
 		<%= @blog_post.title %>
 	</div>
 	<div class="panel-body">
-		<P><%= @blog_post.author %></P>
+		<P><%= @blog_post.user.email %></P>
 		<p><%= time_ago_in_words(@blog_post.created_at) %> ago </p>
-		<p><%= @blog_post_entry %></p>
+		<p><%= @blog_post.blog_entry.html_safe %></p>
 	</div>
-	<div class="pantel-footer">
+	<div class="panel-footer">
+		<% if current_user.id -- @blog_post.user_id %>
 		<%= link_to "Edit", edit_blog_post_path(id: @blog_post.id), class: "btn btn-warning" %>
+		<%= link_to "All Blog Posts", blog_posts_path, class: "btn btn-default" %>
+		<% end %> 
 		<%= link_to "All Blog Posts", blog_posts_path, class: "btn btn-default" %>
 	</div>
 </div>

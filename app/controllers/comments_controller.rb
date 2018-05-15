@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
 
 	before_action :set_comment, only: [:edit, :update, :destroy]
-
+  include ApplicationHelper
   def edit
+    @blog_post = BlogPost.find(@fcomment.blog_post_id)
+    not_post_owner(current_user, @comment)
   end
 
   def create
